@@ -73,3 +73,38 @@ desktop.ini
 static/graphs/*
 # フォルダー自体はGitに残したいので、目印のファイルだけ除外を取り消す
 !static/graphs/.gitkeep
+
+
+#####追加分#####
+# ===== SQLite の付随ファイル ===== *.db では捕まらない
+# 保存処理の最中に git add . すると混入する
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite3-journal
+
+# ===== .env のサフィックス付き ===== .env.local / .env.prod などを塞ぐ
+# この行より後に !.env.example が必要（既に上にあるが、意味を持つのはここから）
+.env.*
+!.env.example
+
+# ===== macOS ===== Macの人がいる場合に出る
+.DS_Store
+._*
+
+# ===== マージ衝突の残骸 =====
+*.orig
+*.rej
+*~
+*.bak
+
+# ===== Python ツールの出力 =====
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+build/
+dist/
+
+# ===== エディタ追加分 =====
+*.code-workspace
