@@ -12,7 +12,8 @@ __pycache__/
 .pytest_cache/      
 
 # ===== 仮想環境 =====  プロジェクト専用に Python とライブラリを隔離する仕組み
-#.venvと.envのどっちを使ってもいいように
+#venv / .venv / env のどの名前で作っても拾えるように
+#（.env は秘密情報を書くファイルで、仮想環境とは別物です。下の「環境変数・秘密情報」を参照）
 venv/               
 .venv/
 env/
@@ -25,6 +26,26 @@ env/
 *.env
 #exampleは除外
 !.env.example
+
+# ===== 鍵・証明書 ===== 漏れるとサーバーに侵入される。絶対にコミットしない
+# EC2のキーペア。これが公開されると誰でもSSHできる
+*.pem
+# PuTTY形式の秘密鍵
+*.ppk
+# SSHの秘密鍵
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+# その他の鍵・証明書
+*.key
+*.crt
+*.p12
+*.pfx
+
+# ===== AWS ===== アクセスキーが入る場所
+.aws/
+credentials
 
 # ===== Flask =====
 #Flaskのインスタンスフォルダ
