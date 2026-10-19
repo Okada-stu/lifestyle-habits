@@ -1,0 +1,69 @@
+#gitに中身を追跡させないようにするもの
+
+#####コードから再生成できるので共有不要#####
+# ===== Python =====
+#自動保存
+__pycache__/  
+#.pyc .pyo .pyd     
+*.py[cod] 
+#setuo.pyやpyproject.toml を作って pip install -e . を実行時のメタデータ           
+*.egg-info/         
+#pytestのキャッシュ
+.pytest_cache/      
+
+# ===== 仮想環境 =====  プロジェクト専用に Python とライブラリを隔離する仕組み
+#.venvと.envのどっちを使ってもいいように
+venv/               
+.venv/
+env/
+
+#####秘密情報。漏れると実害がある#####
+# ===== 環境変数・秘密情報 =====
+# SECRET_KEY や DB の接続情報を書くファイル。絶対にコミットしない
+.env
+#・・・.env(0文字でも可)
+*.env
+#exampleは除外
+!.env.example
+
+# ===== Flask =====
+#Flaskのインスタンスフォルダ
+instance/
+#アプリが出力するログファイル
+*.log
+#特定のログを相手に見せたいとき(巨大なログファイル全体を一緒に解析したい場合)
+#ターミナルで       git add -f ・・・.log
+#追跡を外す場合     git rm --cached ・・・.log
+
+###各自のデータ。共有すると上書き事故###
+# ===== データベース===== 各自の記録データ
+*.db
+*.sqlite
+*.sqlite3
+
+#####個人の環境の産物。相手には無関係#####
+# ===== エディタ・OS =====
+#要相談
+#コードスタイルやデバッグ設定を揃えるなら、
+#.vscode/* に変えて!.vscode/settings.json を足す形に書き換え
+.vscode/
+#PyCharm / IntelliJ IDEA の設定フォルダ
+.idea/
+#Windows がフォルダ内の画像のサムネイルをキャッシュするために作るファイル
+Thumbs.db
+#Windows がフォルダの表示設定（アイコンや名前）を保存するファイル
+desktop.ini
+#Vim が編集中に作る一時ファイル
+*.swp
+
+
+
+#記号の意味
+#   書き方          意味                                    例
+#   *              任意の文字列（/ はまたがない）	         *.db → app.db, test.db
+#   ?              任意の1文字	                           log?.txt → log1.txt
+#   **             階層をまたぐ任意のフォルダ	            docs/**/draft.md
+#   / 末尾         フォルダのみ対象                        venv/
+#   / 先頭         ルート直下のみに限定                    /app.db
+#   / 中間         ルートからの相対パス指定                docs/images/
+#   ! 先頭         除外の取り消し                         !.env.example
