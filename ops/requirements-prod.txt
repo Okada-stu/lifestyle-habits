@@ -1,0 +1,8 @@
+# 本番(EC2)でだけ追加で入れるもの  担当: オカダ
+#
+#   EC2上で:  pip install -r requirements.txt -r ops/requirements-prod.txt
+#
+# gunicorn はWindowsでは動かないため、requirements.txt とは分けてあります。
+# 他の3人はこのファイルを使いません。
+
+gunicorn==23.0.0

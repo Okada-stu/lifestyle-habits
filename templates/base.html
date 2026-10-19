@@ -1,0 +1,23 @@
+{# base.html — 全画面の共通の枠  担当: ナカムラ #}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}生活習慣記録{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="header">
+    <h1>生活習慣記録</h1>
+    <nav>
+      <a href="{{ url_for('input_form') }}">入力</a>
+      <a href="{{ url_for('record_list') }}">一覧</a>
+    </nav>
+  </header>
+
+  <main class="main">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

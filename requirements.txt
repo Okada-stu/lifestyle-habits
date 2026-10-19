@@ -1,0 +1,12 @@
+# 手元（Windows）で開発するために入れるもの
+# 4人で同じ版を使うため、バージョンを固定しています。勝手に上げないでください。
+#
+#   インストール:  pip install -r requirements.txt
+#
+# 本番(EC2)用は ops/requirements-prod.txt です。
+# gunicorn はWindowsに入らないため、こちらには入れていません。
+
+Flask==3.1.0
+matplotlib==3.10.0
+requests==2.32.3
+python-dotenv==1.0.1
