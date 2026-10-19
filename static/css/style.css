@@ -1,0 +1,42 @@
+/* style.css — 画面の見た目  担当: ナカムラ
+   このファイルはナカムラさん以外は編集しないでください。
+   グラフ画像は static/graphs/ に入ります（オオイシさんの出力先）。 */
+
+body {
+  font-family: "Meiryo", "Hiragino Sans", sans-serif;
+  margin: 0;
+  color: #222;
+  background: #fafafa;
+}
+
+.header {
+  padding: 16px 24px;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.header h1 { margin: 0 0 8px; font-size: 20px; }
+.header nav a { margin-right: 16px; }
+
+.main { padding: 24px; max-width: 720px; }
+
+.row { display: flex; align-items: center; margin-bottom: 8px; }
+.row label { width: 10em; }
+
+.error {
+  padding: 12px;
+  border: 1px solid #c00;
+  background: #fff0f0;
+  color: #c00;
+}
+
+.note { color: #666; font-size: 14px; }
+
+.graph { max-width: 100%; height: auto; }
+
+.records { border-collapse: collapse; margin-top: 24px; }
+.records th, .records td {
+  border: 1px solid #ddd;
+  padding: 6px 12px;
+  text-align: left;
+}

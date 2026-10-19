@@ -1,0 +1,32 @@
+{# list.html — 一覧とグラフ  担当: ナカムラ #}
+{% extends "base.html" %}
+{% block title %}一覧{% endblock %}
+
+{% block content %}
+
+  {# グラフ画像。ファイル名は graph.make_pie() の戻り値をそのまま使う。
+     画像そのものを作るのはオオイシさんの担当なので、ここでは表示だけ。 #}
+  {% if graph_name %}
+    <img class="graph" src="{{ url_for('static', filename='graphs/' + graph_name) }}"
+         alt="カテゴリ別の時間配分">
+  {% else %}
+    <p class="note">まだグラフがありません。</p>
+  {% endif %}
+
+  {# TODO(ナカムラ): db.fetch_records() の結果を表にする #}
+  <table class="records">
+    <thead>
+      <tr><th>日付</th><th>カテゴリ</th><th>時間</th></tr>
+    </thead>
+    <tbody>
+      {% for r in records %}
+        <tr>
+          <td>{{ r.date }}</td>
+          <td>{{ labels[r.category] }}</td>
+          <td>{{ "%.1f"|format(r.minutes / 60) }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

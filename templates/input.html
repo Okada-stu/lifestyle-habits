@@ -1,0 +1,35 @@
+{# input.html — 入力画面  担当: ナカムラ #}
+{% extends "base.html" %}
+{% block title %}入力{% endblock %}
+
+{% block content %}
+  {% if error %}
+    <p class="error">{{ error }}</p>
+  {% endif %}
+
+  <form action="{{ url_for('record') }}" method="post">
+
+    {# TODO(ナカムラ)
+       - 日付と利用者を選ぶ欄をここに置く
+       - name 属性は categories.py のキーに合わせる（sleep, school, ...）
+       - value は「分」を入れ、表示は「時間」にする
+    #}
+    {% for key, label in categories %}
+      <div class="row">
+        <label for="{{ key }}">{{ label }}</label>
+        <select id="{{ key }}" name="{{ key }}">
+          {% for minutes in choices %}
+            <option value="{{ minutes }}">{{ "%.1f"|format(minutes / 60) }} 時間</option>
+          {% endfor %}
+        </select>
+      </div>
+    {% endfor %}
+
+    <p class="note">
+      「その他」は入力しません。24時間に足りない分は自動で「その他」になります。<br>
+      合計が24時間を超えていると保存されず、この画面に戻ります。
+    </p>
+
+    <button type="submit">保存する</button>
+  </form>
+{% endblock %}
